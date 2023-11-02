@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, Length } from 'class-validator';
+import { IsNotEmpty, IsString, Length, Matches } from 'class-validator';
 
 export class UserCredentialsDto {
   @Length(5, 20)
@@ -6,7 +6,8 @@ export class UserCredentialsDto {
   @IsString()
   username: string;
 
-  @Length(5, 8)
+  @Length(5, 20)
   @IsNotEmpty()
+  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)
   password: string;
 }

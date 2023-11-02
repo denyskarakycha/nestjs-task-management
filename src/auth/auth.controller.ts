@@ -6,8 +6,13 @@ import { AuthService } from './auth.service';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Post('/sinup')
+  @Post('/signup')
   sinUp(@Body() userCredentialsDto: UserCredentialsDto): Promise<void> {
-    return this.authService.sinUp(userCredentialsDto);
+    return this.authService.signUp(userCredentialsDto);
+  }
+
+  @Post('/signin')
+  sinIn(@Body() userCredentialsDto: UserCredentialsDto): Promise<string> {
+    return this.authService.signIn(userCredentialsDto);
   }
 }
