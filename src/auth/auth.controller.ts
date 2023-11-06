@@ -12,7 +12,9 @@ export class AuthController {
   }
 
   @Post('/signin')
-  sinIn(@Body() userCredentialsDto: UserCredentialsDto): Promise<string> {
+  sinIn(
+    @Body() userCredentialsDto: UserCredentialsDto,
+  ): Promise<{ accessToken: string }> {
     return this.authService.signIn(userCredentialsDto);
   }
 }
